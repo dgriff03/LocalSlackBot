@@ -8,14 +8,15 @@
    - If you have an existing app and want to keep your configuration, just make sure that the OAuth redirect URL at https://api.slack.com/apps/<your app>/oauth?set_up_redirect_urls=1 is setup. Using OAuth will allow you to read public channels that the bot is not a member. A bot token can only read values of channels if is a member of. For the redirect URL, use `https://<YOUR_NGROK>.ngrok-free.app/slack/oauth_redirect`
 
 2. Add an .env file to the root directory with the following values:
-
-   - `SLACK_SIGNING_SECRET`: On the https://api.slack.com/apps/<your_app>/general page in _App Credentials_
-   - `SLACK_CLIENT_ID`: On the https://api.slack.com/apps/<your_app>/general page in _App Credentials_
-   - `SLACK_CLIENT_SECRET`: On the https://api.slack.com/apps/<your_app>/general page in _App Credentials_
-   - `SLACK_BOT_SCOPES` (optional): Must be equal to or a subset of the **bot** scopes on https://api.slack.com/apps/<your_app>/oauth in _Scopes_, subsection _Bot Token Scopes_. Values are `;` separated. Optional if you use the example_manifest or you have the same scopes.
-   - `SLACK_BOT_SCOPES`: Must be equal to or a subset of the **User** scopes on https://api.slack.com/apps/<your_app>/oauth in*Scopes*, subsection _User Token Scopes_. Values are be `;` separated. It is recommended to use channel:history here to be able to read public channels that the bot is not a member of. Optional if you use the example_manifest or you have the same scopes.
-   - `SLACK_SERVER_STATE_SECRET` (Optional): Any random string - doesn't matter much unless productionalizing
-   - `SLACK_SERVER_PORT` (Optional): What port you would like the server to run on. Defaults to 3000
+   -  Required
+      - `SLACK_SIGNING_SECRET`: On the https://api.slack.com/apps/<your_app>/general page in _App Credentials_
+      - `SLACK_CLIENT_ID`: On the https://api.slack.com/apps/<your_app>/general page in _App Credentials_
+      - `SLACK_CLIENT_SECRET`: On the https://api.slack.com/apps/<your_app>/general page in _App Credentials_
+   - Optional
+      - `SLACK_BOT_SCOPES`: Must be equal to or a subset of the **bot** scopes on https://api.slack.com/apps/<your_app>/oauth in _Scopes_, subsection _Bot Token Scopes_. Values are `;` separated. Optional if you use the example_manifest or you have the same scopes.
+      - `SLACK_BOT_SCOPES`: Must be equal to or a subset of the **User** scopes on https://api.slack.com/apps/<your_app>/oauth in*Scopes*, subsection _User Token Scopes_. Values are be `;` separated. It is recommended to use channel:history here to be able to read public channels that the bot is not a member of. Optional if you use the example_manifest or you have the same scopes.
+      - `SLACK_SERVER_STATE_SECRET`: Any random string - doesn't matter much unless productionalizing
+      - `SLACK_SERVER_PORT`: What port you would like the server to run on. Defaults to 3000
 
 3. Run `npm install` to install all dependencies
 4. Run `npm run dev` to start the server
